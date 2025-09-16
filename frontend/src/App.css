@@ -1,0 +1,277 @@
+body.dark-mode {
+  background: #181c24;
+  color: #f3f3f3;
+}
+.dark-mode .header-bar {
+  background: #222d3b;
+  color: #ffb300;
+}
+.dark-mode .header-title {
+  color: #ffb300;
+}
+.dark-mode .form-control, .dark-mode .form-select {
+  background: #222d3b;
+  color: #fff;
+  border: 1px solid #444;
+}
+.dark-mode .sidebar {
+  background: #222d3b;
+  color: #ffb300;
+  box-shadow: 0 2px 12px #000a;
+}
+.dark-mode .card {
+  background: #222d3b;
+  color: #fff;
+  box-shadow: 0 2px 12px #000a;
+}
+.dark-mode .add-task-btn, .dark-mode .fab-add-task {
+  background: linear-gradient(90deg, #222d3b 60%, #1976d2 100%);
+  color: #ffb300;
+}
+.dark-mode .add-task-btn:hover, .dark-mode .fab-add-task:hover {
+  background: linear-gradient(90deg, #181c24 60%, #125bb5 100%);
+}
+.dark-mode .footer-bar {
+  background: #181c24;
+  color: #ffb300;
+}
+.dark-mode .footer-links a, .dark-mode .footer-social a {
+  color: #ffb300;
+}
+.dark-mode .footer-links a:hover, .dark-mode .footer-social a:hover {
+  color: #fff;
+}
+.dark-mode .loader {
+  border: 6px solid #444;
+  border-top: 6px solid #ffb300;
+}
+.dark-mode .MuiSnackbar-root {
+  z-index: 2000;
+}
+.dark-mode .MuiAlert-root {
+  background: #222d3b !important;
+  color: #ffb300 !important;
+}
+/* Floating Add Task Button */
+.fab-add-task {
+  position: fixed;
+  bottom: 38px;
+  right: 38px;
+  z-index: 1200;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #512da8 60%, #1976d2 100%);
+  color: #fff;
+  font-size: 34px;
+  box-shadow: 0 4px 16px #1976d233;
+  border: none;
+  transition: background 0.2s;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.fab-add-task:hover {
+  background: linear-gradient(90deg, #311b92 60%, #125bb5 100%);
+}
+
+@media (max-width: 600px) {
+  .fab-add-task {
+    bottom: 18px;
+    right: 18px;
+    width: 54px;
+    height: 54px;
+    font-size: 28px;
+  }
+}
+/* Loader Spinner */
+.loader {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #1976d2;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  animation: spin 1s linear infinite;
+  margin: 60px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Toast (Snackbar) custom style if needed */
+.MuiSnackbar-root {
+  z-index: 2000;
+}
+.MuiAlert-root {
+  font-size: 1.1rem;
+  font-family: inherit;
+}
+body {
+  font-family: 'Assistant', 'Varela Round', Arial, sans-serif;
+  background: #f6f8fb;
+  color: #222;
+  direction: rtl;
+}
+
+.header-bar {
+  background: #1565c0;
+  color: #fff;
+  padding: 0.7rem 0;
+  box-shadow: 0 2px 8px #1976d222;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  gap: 1.5rem;
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 16px;
+  transition: background 0.2s;
+}
+
+.navbar a.active, .navbar a:hover {
+  background: #1976d2;
+}
+
+.add-task-btn {
+  background: linear-gradient(90deg, #512da8 60%, #1976d2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 8px 24px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-right: 12px;
+  box-shadow: 0 2px 8px #512da822;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.add-task-btn:hover {
+  background: linear-gradient(90deg, #311b92 60%, #125bb5 100%);
+  box-shadow: 0 4px 16px #512da822;
+}
+
+.sidebar {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px #1976d222;
+  padding: 1.5rem 1rem;
+  min-width: 220px;
+  max-width: 320px;
+}
+
+.sidebar h5 {
+  color: #1976d2;
+  font-weight: bold;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #333;
+}
+
+.form-control, .form-select {
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  margin-bottom: 0.5rem;
+}
+
+button, .btn {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 18px;
+  padding: 8px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+button:hover, .btn:hover {
+  background: #512da8;
+}
+
+.card {
+  border-radius: 18px;
+  box-shadow: 0 2px 12px #1976d222;
+  background: #fff;
+  margin-bottom: 1.5rem;
+  padding: 1.2rem 1rem;
+}
+
+.footer-bar {
+  background: #222d3b;
+  color: #fff;
+  padding: 2rem 0 1rem 0;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.footer-links a:hover {
+  color: #ffb300;
+}
+
+.footer-social {
+  margin: 1rem 0;
+}
+.footer-social a {
+  color: #fff;
+  margin: 0 8px;
+  font-size: 1.5rem;
+  transition: color 0.2s;
+}
+.footer-social a:hover {
+  color: #1976d2;
+}
+
+@media (max-width: 900px) {
+  .header-content {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .sidebar {
+    min-width: unset;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+}
