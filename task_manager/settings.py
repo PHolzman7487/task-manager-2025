@@ -2,7 +2,8 @@
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.sendgrid.net"
 EMAIL_HOST_USER = "apikey"  # לא לשנות!
-EMAIL_HOST_PASSWORD = "***REMOVED***"
+import os
+EMAIL_HOST_PASSWORD = os.environ.get("SENDGRID_API_KEY", "")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "p4127487@gmail.com"  # הכתובת שאישרת ב-SendGrid
@@ -28,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*&1hforqhx%*53(49xn@=pnnqw4!nb!(4_1(nt^2b1d479lrw8'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'replace-me-in-production')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
