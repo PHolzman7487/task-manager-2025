@@ -1,6 +1,15 @@
 import React, { useState } from "react";
+const defaultTexts = {
+  contact: "צור קשר",
+  name: "שם מלא",
+  email: "אימייל",
+  phone: "טלפון",
+  message: "הודעה",
+  sendButton: "שלח",
+  cancelButton: "ביטול"
+};
 
-export default function ContactModal({ open, onClose, onSuccess, texts }) {
+export default function ContactModal({ open, onClose, onSuccess, texts = defaultTexts }) {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [sending, setSending] = useState(false);
 

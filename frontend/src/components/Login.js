@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 
-export default function Login({ onLogin, texts }) {
+const defaultTexts = {
+  loginTab: "התחברות",
+  registerTab: "הרשמה"
+};
+
+export default function Login({ onLogin, texts = defaultTexts }) {
   const [tab, setTab] = useState("login"); // "login" או "register"
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -33,7 +38,7 @@ export default function Login({ onLogin, texts }) {
   };
 
   return (
-     <div className="d-flex justify-content-center align-items-center vh-100">
+  <div className="d-flex justify-content-center align-items-center vh-100">
     <div className="card shadow p-4" style={{ minWidth: 340, maxWidth: 370 }}>
         <div className="d-flex justify-content-center mb-3">
           <button

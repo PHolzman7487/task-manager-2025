@@ -1,6 +1,16 @@
 import { Box, Typography, Paper, Link } from "@mui/material";
+const defaultTexts = {
+  about: "אודות האתר",
+  aboutDescription: "אתר מנהל המשימות נועד לעזור לך לנהל, לסנן ולעקוב אחרי המשימות שלך בצורה פשוטה ונוחה.",
+  teamTitle: "צוות הפיתוח:",
+  teamMembers: "פניני הולצמן",
+  teamList: "צוות הפיתוח: דנה, יוסי, רותם",
+  contactTitle: "יצירת קשר:",
+  emailLabel: "מייל",
+  phoneLabel: "טלפון"
+};
 
-export default function About({ texts }) {
+export default function About({ texts = defaultTexts }) {
   return (
     <Box sx={{ maxWidth: 500, mx: "auto", mt: 8, direction:"rtl" }}>
       <Paper sx={{ p: 4, borderRadius: 4 }}>

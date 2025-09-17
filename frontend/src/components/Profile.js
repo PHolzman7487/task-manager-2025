@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 import { Box, Typography, TextField, Button, Avatar, Paper, Snackbar, Alert } from "@mui/material";
+const defaultTexts = {
+  profile: "פרופיל משתמש",
+  usernameLabel: "שם משתמש",
+  passwordLabel: "סיסמה",
+  saveButton: "שמור",
+  changePassword: "שנה סיסמה"
+};
 
-export default function Profile({ texts }) {
+export default function Profile({ texts = defaultTexts }) {
   const [username, setUsername] = useState("");
   const [newUsername, setNewUsername] = useState("");
   const [password, setPassword] = useState("");

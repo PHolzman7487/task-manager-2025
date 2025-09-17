@@ -1,6 +1,19 @@
 import React, { useState, useEffect } from "react";
+const defaultTexts = {
+  editTaskTitle: "עריכת משימה",
+  titleLabel: "כותרת",
+  descriptionLabel: "תיאור",
+  dueDateLabel: "תאריך יעד",
+  priorityLabel: "דחיפות",
+  completedLabel: "הושלם",
+  fileLabel: "קובץ",
+  tagsLabel: "תגיות",
+  recurrenceLabel: "חזרתיות",
+  saveButton: "שמור",
+  cancelButton: "ביטול"
+};
 
-export default function EditTaskDialog({ open, task, onSave, onClose, texts }) {
+export default function EditTaskDialog({ open, task, onSave, onClose, texts = defaultTexts }) {
   const [form, setForm] = useState({
     title: "",
     description: "",
