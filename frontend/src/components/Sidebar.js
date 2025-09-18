@@ -34,6 +34,7 @@ export default function Sidebar({ filters, setFilters, allTags, texts }) {
           value={filters.search || ""}
           onChange={handleChange}
           placeholder={texts.search}
+          tabindex="0"
         />
       </div>
       {/* תגיות (בחירה מרובה) */}
@@ -45,7 +46,7 @@ export default function Sidebar({ filters, setFilters, allTags, texts }) {
           value={filters.tags || []}
           onChange={(_, value) => setFilters(f => ({ ...f, tags: value }))}
           renderInput={(params) => (
-            <TextField {...params} variant="outlined" placeholder={texts.tags} />
+            <TextField {...params} variant="outlined" placeholder={texts.tags} aria-label={texts.tags} />
           )}
         />
       </div>

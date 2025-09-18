@@ -60,25 +60,27 @@ export default function TaskList({ tasks, onEdit, onDelete, onToggle, texts }) {
     <div>
       <h2 className="mb-4" style={{ color: "#1976d2", fontWeight: "bold" }}>{texts.tasksTitle || texts.tasksListTitle || "המשימות שלך"}</h2>
       <div style={{ marginBottom: 16, display: "flex", gap: 8 }}>
-        <button className="btn btn-sm btn-outline-primary" onClick={exportAllTasksToPDF}>
+        <button className="btn btn-sm btn-outline-primary" onClick={exportAllTasksToPDF} aria-label={texts.exportPDF || "ייצוא כל המשימות ל-PDF"} tabindex="0">
           {texts.exportPDF || "ייצוא כל המשימות ל-PDF"}
         </button>
-        <button className="btn btn-sm btn-outline-success" onClick={exportAllTasksToExcel}>
+        <button className="btn btn-sm btn-outline-success" onClick={exportAllTasksToExcel} aria-label={texts.exportExcel || "ייצוא כל המשימות ל-Excel"} tabindex="0">
           {texts.exportExcel || "ייצוא כל המשימות ל-Excel"}
         </button>
       </div>
-      {tasks.map(task => (
-        <div key={task.id} className="card mb-3">
-          <TaskItem
-            key={task.id}
-            task={task}
-            onEdit={onEdit}
-            onDelete={onDelete}
-            onToggle={onToggle}
-            texts={texts}
-          />
-        </div>
-      ))}
+      <div role="list" aria-label={texts.tasksTitle || texts.tasksListTitle || "רשימת משימות"}>
+        {tasks.map(task => (
+          <div key={task.id} className="card mb-3">
+            <TaskItem
+              key={task.id}
+              task={task}
+              onEdit={onEdit}
+              onDelete={onDelete}
+              onToggle={onToggle}
+              texts={texts}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

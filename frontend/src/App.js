@@ -15,11 +15,15 @@ import About from "./components/About";
 import Sidebar from "./components/Sidebar";
 import ContactModal from "./components/ContactModal";
 import "./App.css";
+import "./accessibility.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   // סטייטים עיקריים
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasksRaw] = useState([]);
+  // הגנה: תמיד מערך
+  const safeTasks = Array.isArray(tasks) ? tasks : [];
+  const setTasks = setTasksRaw;
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [loading, setLoading] = useState(false);
   const [editTask, setEditTask] = useState(null);
@@ -56,29 +60,29 @@ function App() {
     if (token) {
       setLoading(true);
       getTasks(token)
-        .then(setTasks)
+        .then(data => setTasks(Array.isArray(data) ? data : []))
         .finally(() => setLoading(false));
     }
   }, [token]);
 
   // התראה על משימות דחופות
   useEffect(() => {
-    if (!tasks.length) return;
+    if (!safeTasks.length) return;
     const today = new Date();
     const tomorrow = new Date();
     tomorrow.setDate(today.getDate() + 1);
-    const urgentTasks = tasks.filter(
+    const urgentTasks = safeTasks.filter(
       t => t.priority === "high" ||
         (t.due_date && (new Date(t.due_date).toDateString() === today.toDateString() || new Date(t.due_date).toDateString() === tomorrow.toDateString()))
     );
     if (urgentTasks.length) {
-      setAlertMsg(`יש לך ${urgentTasks.length} משימות דחופות או עם תאריך יעד קרוב!`);
+      setAlertMsg(`יש לך ${urgentTasks.length} משימות דחxxxx או עם תאריך יעד קרוב!`);
       setAlertOpen(true);
     }
-  }, [tasks]);
+  }, [safeTasks]);
 
   // סינון משימות
-  const filteredTasks = tasks.filter(task => {
+  const filteredTasks = safeTasks.filter(task => {
     // מצב פוקוס: רק דחxxxx או של היום
     if (focusMode) {
       const today = new Date().toDateString();
@@ -103,15 +107,15 @@ function App() {
 
   // פונקציות CRUD
   const handleLogin = async ({ username, password }) => {
-    const res = await fetch("http://localhost:8000/api-token-auth/", {
+  const res = await fetch("http://localhost:8000/api/token/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
     });
     const data = await res.json();
-    if (data.token) {
-      setToken(data.token);
-      localStorage.setItem("token", data.token);
+    if (data.access) {
+      setToken(data.access);
+      localStorage.setItem("token", data.access);
       localStorage.setItem("username", username);
     } else {
       alert("שם משתמש או סיסמה שגויים");
@@ -120,20 +124,20 @@ function App() {
 
   const handleCreate = async (formData) => {
     const newTask = await createTask(formData, token);
-    setTasks([...tasks, newTask]);
+  setTasks([...safeTasks, newTask]);
     setShowAdd(false);
   };
 
   const handleDelete = async (id) => {
     await deleteTask(id, token);
-    setTasks(tasks.filter((t) => t.id !== id));
+  setTasks(safeTasks.filter((t) => t.id !== id));
   };
 
   const handleEdit = (task) => setEditTask(task);
 
   const handleSaveEdit = async (id, formData) => {
     const updated = await updateTask(id, formData, token);
-    setTasks(tasks.map((t) => (t.id === id ? updated : t)));
+  setTasks(safeTasks.map((t) => (t.id === id ? updated : t)));
     setEditTask(null);
   };
 
@@ -150,7 +154,7 @@ function App() {
     }
     const updated = await updateTask(task.id, formData, token);
     if (!updated) return;
-    setTasks(tasks.map((t) => (t.id === task.id ? updated : t)));
+  setTasks(safeTasks.map((t) => (t.id === task.id ? updated : t)));
   };
 
   const handleLogout = () => {

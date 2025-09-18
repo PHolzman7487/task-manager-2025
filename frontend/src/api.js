@@ -2,24 +2,28 @@ const API_URL = "http://localhost:8000/api/tasks/";
 
 export async function getTasks(token) {
   const res = await fetch(API_URL, {
-    headers: { Authorization: `Token ${token}` }
+    headers: { Authorization: `Bearer ${token}` }
   });
-  return res.json();
+  const data = await res.json();
+  if (Array.isArray(data)) return data;
+  if (data && Array.isArray(data.results)) return data.results;
+  return [];
 }
 
 export async function createTask(formData, token) {
   const res = await fetch(API_URL, {
     method: "POST",
-    headers: { Authorization: `Token ${token}` },
+    headers: { Authorization: `Bearer ${token}` },
     body: formData,
   });
-  return res.json();
+  const data = await res.json();
+  return typeof data === "object" && data !== null ? data : {};
 }
 
 export async function updateTask(id, formData, token) {
   const res = await fetch(`${API_URL}${id}/`, {
     method: "PUT",
-    headers: { Authorization: `Token ${token}` },
+    headers: { Authorization: `Bearer ${token}` },
     body: formData,
   });
   if (!res.ok) {
@@ -28,12 +32,13 @@ export async function updateTask(id, formData, token) {
     console.error("Update failed:", error);
     return null;
   }
-  return res.json();
+  const data = await res.json();
+  return typeof data === "object" && data !== null ? data : {};
 }
 
 export async function deleteTask(id, token) {
   await fetch(`${API_URL}${id}/`, {
     method: "DELETE",
-    headers: { Authorization: `Token ${token}` },
+    headers: { Authorization: `Bearer ${token}` },
   });
 }

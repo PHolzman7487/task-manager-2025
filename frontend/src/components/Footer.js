@@ -9,6 +9,7 @@ export default function Footer({ onContactClick, texts }) {
           className="btn btn-link p-0"
           style={{ color: "#fff", textDecoration: "none", fontWeight: 500, background: "none", border: "none" }}
           onClick={onContactClick}
+          tabindex="0"
         >
           {texts.contact}
         </button>
@@ -18,13 +19,13 @@ export default function Footer({ onContactClick, texts }) {
       </div>
       <div className="footer-social">
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="פייסבוק">
-          <i className="bi bi-facebook"></i>
+          <i className="bi bi-facebook" aria-label="פייסבוק"></i>
         </a>
         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="לינקדאין">
-          <i className="bi bi-linkedin"></i>
+          <i className="bi bi-linkedin" aria-label="לינקדאין"></i>
         </a>
         <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="גיטהאב">
-          <i className="bi bi-github"></i>
+          <i className="bi bi-github" aria-label="גיטהאב"></i>
         </a>
       </div>
       <div style={{ fontSize: "0.95em", opacity: 0.8 }}>

@@ -7,7 +7,7 @@ export default function Header({ onLogout, onAddTask, search, setSearch, darkMod
   const firstLetter = username[0] || "מ";
 
   return (
-    <div className="header-bar">
+    <div className="header-bar" role="banner" aria-label="סרגל עליון">
   <div className="header-content" style={{ flexDirection: "row" }}>
         <span className="header-title">{texts.title}</span>
         <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
@@ -24,7 +24,7 @@ export default function Header({ onLogout, onAddTask, search, setSearch, darkMod
           <Link to="/" className={location.pathname === "/" ? "active" : ""}>{texts.allTasks}</Link>
           <Link to="/profile" className={location.pathname === "/profile" ? "active" : ""}>{texts.profile}</Link>
           <Link to="/about" className={location.pathname === "/about" ? "active" : ""}>{texts.about}</Link>
-          <button className="add-task-btn ms-2" onClick={onAddTask}>
+          <button className="add-task-btn ms-2" onClick={onAddTask} aria-label={texts.addTask || "הוספת משימה"}>
             {texts.addTask}
           </button>
           <button
@@ -39,6 +39,8 @@ export default function Header({ onLogout, onAddTask, search, setSearch, darkMod
             }}
             onClick={() => setDarkMode(d => !d)}
             title={darkMode ? "מצב רגיל" : "מצב כהה"}
+            aria-label={darkMode ? "החלף למצב רגיל" : "החלף למצב כהה"}
+            tabindex="0"
           >
             {darkMode ? "☀️" : "🌙"}
           </button>
@@ -54,6 +56,8 @@ export default function Header({ onLogout, onAddTask, search, setSearch, darkMod
             }}
             onClick={() => setFocusMode(f => !f)}
             title={focusMode ? "מצב רגיל" : "מצב פוקוס"}
+            aria-label={focusMode ? "החלף למצב רגיל" : "החלף למצב פוקוס"}
+            tabindex="0"
           >
             {focusMode ? "🔎 פוקוס" : "פוקוס"}
           </button>
