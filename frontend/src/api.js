@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8000/api/tasks/";
+const API_URL = "https://task-manager-2025-4.onrender.com/api/tasks/";
 
 export async function getTasks(token) {
   const res = await fetch(API_URL, {
