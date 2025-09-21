@@ -1,6 +1,14 @@
+DJango>=4.0
+## psycopg2-binary (לא נדרש ב-SQLite)
+djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
+
 drf-yasg
 DJango>=4.0
 psycopg2-binary
 djangorestframework
 djangorestframework-simplejwt
 django-cors-headers
+## gunicorn (לא נדרש ב-Render)
+## django-heroku (לא נדרש ב-Render)

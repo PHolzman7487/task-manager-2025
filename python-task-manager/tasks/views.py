@@ -41,7 +41,7 @@ class TaskViewSet(viewsets.ModelViewSet):
                     urgent = True
                     msg = f"משימה מתקרבת: {instance.title} (תאריך יעד: {instance.due_date})"
                 if urgent and msg:
-                    print(f"Trying to send mail to {user.email} with subject 'התראת משימה דחופה/קרובה' and message: {msg}")
+                    # ...existing code...
                     try:
                         send_mail(
                             subject="התראת משימה דחופה/קרובה",
@@ -49,9 +49,9 @@ class TaskViewSet(viewsets.ModelViewSet):
                             from_email="p4127487@gmail.com",
                             recipient_list=[user.email],
                         )
-                        print("Mail sent successfully!")
+                        pass
                     except Exception as e:
-                        print(f"Mail sending failed: {e}")
+                        pass
             # חזרתיות
             if was_completed and recurrence and recurrence != "none":
                 # חשב תאריך יעד חדש
@@ -83,8 +83,9 @@ class TaskViewSet(viewsets.ModelViewSet):
                         tags=instance.tags,
                         recurrence=instance.recurrence
                     )
+            pass
         except Exception as e:
-            pass  # אפשר להוסיף לוג או הדפסה
+            pass
         return response
 
 class RegisterView(generics.CreateAPIView):
@@ -102,7 +103,7 @@ def contact(request):
         message = data.get("message")
         if not all([name, email, phone, message]):
             return JsonResponse({"error": "יש למלא את כל השדות"}, status=400)
-        print(f"Trying to send contact mail to p4127487@gmail.com with subject 'פנייה חדשה מהאתר'")
+    # ...existing code...
         try:
             send_mail(
                 subject="פנייה חדשה מהאתר",
@@ -110,8 +111,8 @@ def contact(request):
                 from_email="p4127487@gmail.com",
                 recipient_list=["p4127487@gmail.com"],
             )
-            print("Contact mail sent successfully!")
+            pass
         except Exception as e:
-            print(f"Contact mail sending failed: {e}")
+            pass
         return JsonResponse({"success": True})
     return JsonResponse({"error": "Invalid request"}, status=400)

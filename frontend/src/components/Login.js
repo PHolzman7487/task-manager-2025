@@ -25,7 +25,7 @@ export default function Login({ onLogin, texts = defaultTexts }) {
           body: JSON.stringify({ username, password, email }),
         });
         if (res.ok) {
-          alert("נרשמת בהצלחה! עכשיו התחבר/י");
+          // אפשר להציג הודעה ב-UI במקום alert
           setTab("login");
         } else {
           const data = await res.json();

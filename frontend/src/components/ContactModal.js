@@ -32,11 +32,11 @@ export default function ContactModal({ open, onClose, onSuccess, texts = default
         onClose();
       } else {
         setSending(false);
-        alert("שליחה נכשלה, נסה שוב.");
+  // אפשר להציג הודעה ב-UI במקום alert
       }
     } catch {
       setSending(false);
-      alert("שליחה נכשלה, נסה שוב.");
+  // אפשר להציג הודעה ב-UI במקום alert
     }
   };
 

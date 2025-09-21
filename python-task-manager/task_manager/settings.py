@@ -42,7 +42,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'replace-me-in-production')
 DEBUG = False
 
 import os
-ALLOWED_HOSTS = [os.environ.get('HEROKU_APP_DOMAIN', '*')]
+ALLOWED_HOSTS = ['*']  # עדיף להגדיר דומיין בענן
 
 
 # Application definition
@@ -146,7 +146,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# הפעלה אוטומטית של הגדרות Heroku
+## הסרת קוד Heroku
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

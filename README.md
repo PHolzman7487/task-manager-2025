@@ -25,7 +25,14 @@ TaskManager היא מערכת מבוססת Django (Backend) ו-React (Frontend) 
 6. צפייה בדשבורד סטטיסטיקות
 
 ## דמו חי
-לאחר העלאה לענן יתווסף כאן קישור לדמו החי של הפרויקט.
+
+## דמו חי
+המערכת זמינה בענן:
+
+- [Frontend – TaskManager ב-Vercel](https://task-manager-2025-byvg4rtjp-pnina-holzmans-projects-ae996afd.vercel.app)
+- [Backend – TaskManager ב-Render](https://task-manager-2025-4.onrender.com)
+
+כל שינוי שתבצעי בקוד ותדחפי ל-GitHub יתעדכן אוטומטית באתר החי.
 
 ## טכנולוגיות עיקריות
 - Django 4
